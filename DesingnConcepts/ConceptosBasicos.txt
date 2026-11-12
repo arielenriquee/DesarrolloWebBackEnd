@@ -1,1 +1,12 @@
 Concepto de Base de Datos:
+
+una base de datos relacional es un conjunto de tablas relacionadas , que se utiliza para almacenar y gestionar información relacionada .
+
+El elemento principal de la base de datos e la tabla , que contiene filas (registros, récord , tuplas) y columnas (campos, filas) .
+
+una tabla no puede tener filas duplicadas con lo cual necesita de un campo que sea PK (PrimaryKey)
+
+¿que es una PK?
+una PK es un campo o grupo de campos que impiden que se duplique los registros de una tabla , en una tabla solamente puede haber una PK,  y los campos que participan en la pk tendrán una llave-sita al principio , ademas un campo que es pk no admite valores NULL , que null en base de datos no quiere decir que sea una cadena vacía , ni un valor por defecto a cero , NULL quiere decir desconocido y hay que tener muchos cuidado con los valores NULL y evitarlos en la medida de lo posible , porque al evaluar una expresión donde halla un valor NULL toda la expresión se puede evaluar como NULL.
+
+UQ (Unique) : no puede existir mas de una PK en la tabla , pero si varios campos UQ , que ademas si admite NULL en la tabla 
