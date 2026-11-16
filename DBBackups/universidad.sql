@@ -23,7 +23,7 @@ SET @@SESSION.SQL_LOG_BIN= 0;
 -- GTID state at the beginning of the backup 
 --
 
-SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '5853ee8a-dc92-11f1-adb5-92678e2eecaf:1-57';
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '5853ee8a-dc92-11f1-adb5-92678e2eecaf:1-65';
 
 --
 -- Table structure for table `correos`
@@ -39,7 +39,7 @@ CREATE TABLE `correos` (
   PRIMARY KEY (`id`),
   KEY `fk_correos_estudiantes1_idx` (`estudiantes_id`),
   CONSTRAINT `fk_correos_estudiantes1` FOREIGN KEY (`estudiantes_id`) REFERENCES `estudiantes` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,6 +48,7 @@ CREATE TABLE `correos` (
 
 LOCK TABLES `correos` WRITE;
 /*!40000 ALTER TABLE `correos` DISABLE KEYS */;
+INSERT INTO `correos` VALUES (1,'arieloleas@hotmail.es',1),(2,'dayabajumbo@hotmail.es',2);
 /*!40000 ALTER TABLE `correos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,14 +64,14 @@ CREATE TABLE `estudiantes` (
   `nombre` varchar(45) DEFAULT NULL,
   `apellido1` varchar(45) NOT NULL,
   `apellido2` varchar(45) NOT NULL,
-  `genero` enum('Hombre,Mujer,Otro') NOT NULL,
+  `genero` enum('M','F','Otro') NOT NULL,
   `fecha_de_matriculacion` date NOT NULL,
   `total_de_asignaturas` varchar(45) NOT NULL,
   `facultades_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_estudiantes_facultades_idx` (`facultades_id`),
   CONSTRAINT `fk_estudiantes_facultades` FOREIGN KEY (`facultades_id`) REFERENCES `facultades` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,6 +80,7 @@ CREATE TABLE `estudiantes` (
 
 LOCK TABLES `estudiantes` WRITE;
 /*!40000 ALTER TABLE `estudiantes` DISABLE KEYS */;
+INSERT INTO `estudiantes` VALUES (1,'Ariel','Oleas','Hernandez','M','2022-04-01','6',1),(2,'dayana','jumbo','bajaña','F','2022-12-12','4',3);
 /*!40000 ALTER TABLE `estudiantes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +95,7 @@ CREATE TABLE `facultades` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,6 +104,7 @@ CREATE TABLE `facultades` (
 
 LOCK TABLES `facultades` WRITE;
 /*!40000 ALTER TABLE `facultades` DISABLE KEYS */;
+INSERT INTO `facultades` VALUES (1,'ingenieria'),(2,'ciencias'),(3,'derecho'),(4,'lengua');
 /*!40000 ALTER TABLE `facultades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +122,7 @@ CREATE TABLE `telefonos` (
   PRIMARY KEY (`id`),
   KEY `fk_telefonos_estudiantes1_idx` (`estudiantes_id`),
   CONSTRAINT `fk_telefonos_estudiantes1` FOREIGN KEY (`estudiantes_id`) REFERENCES `estudiantes` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,6 +131,7 @@ CREATE TABLE `telefonos` (
 
 LOCK TABLES `telefonos` WRITE;
 /*!40000 ALTER TABLE `telefonos` DISABLE KEYS */;
+INSERT INTO `telefonos` VALUES (1,'237547349',1),(2,'348624538',2);
 /*!40000 ALTER TABLE `telefonos` ENABLE KEYS */;
 UNLOCK TABLES;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
@@ -141,4 +145,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-11-14 20:02:59
+-- Dump completed on 2026-11-16 10:34:25
